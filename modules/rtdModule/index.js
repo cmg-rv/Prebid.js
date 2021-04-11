@@ -147,7 +147,7 @@ import * as utils from '../../src/utils.js';
 import events from '../../src/events.js';
 import CONSTANTS from '../../src/constants.json';
 import {gdprDataHandler, uspDataHandler} from '../../src/adapterManager.js';
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 import {getGlobal} from '../../src/prebidGlobal.js';
 
 /** @type {string} */

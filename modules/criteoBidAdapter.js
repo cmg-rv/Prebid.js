@@ -3,8 +3,8 @@ import {registerBidder} from '../src/adapters/bidderFactory.js';
 import {config} from '../src/config.js';
 import {BANNER, NATIVE, VIDEO} from '../src/mediaTypes.js';
 import * as utils from '../src/utils.js';
-import find from 'core-js-pure/features/array/find.js';
-import { verify } from 'criteo-direct-rsa-validate/build/verify.js';
+import find from '@cmg-rv/core-js-alt/find';
+// import { verify } from 'criteo-direct-rsa-validate/build/verify.js';
 import { getStorageManager } from '../src/storageManager.js';
 
 const GVLID = 91;
@@ -472,13 +472,14 @@ export function tryGetCriteoFastBid() {
         const publisherTagHash = firstLine.substr(hashPrefix.length);
         const publisherTag = fastBidFromStorage.substr(firstLineEndPosition + 1);
 
-        if (verify(publisherTag, publisherTagHash, FAST_BID_PUBKEY_N, FAST_BID_PUBKEY_E)) {
-          utils.logInfo('Using Criteo FastBid');
-          eval(publisherTag); // eslint-disable-line no-eval
-        } else {
+        // BIDBARREL-SPEC
+        // if (verify(publisherTag, publisherTagHash, FAST_BID_PUBKEY_N, FAST_BID_PUBKEY_E)) {
+        //   utils.logInfo('Using Criteo FastBid');
+        //   eval(publisherTag); // eslint-disable-line no-eval
+        // } else {
           utils.logWarn('Invalid Criteo FastBid found');
           storage.removeDataFromLocalStorage(fastBidStorageKey);
-        }
+        // }
       }
     }
   } catch (e) {

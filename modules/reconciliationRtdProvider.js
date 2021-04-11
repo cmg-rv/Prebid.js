@@ -19,7 +19,7 @@
 import { submodule } from '../src/hook.js';
 import { ajaxBuilder } from '../src/ajax.js';
 import * as utils from '../src/utils.js';
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 
 /** @type {Object} */
 const MessageType = {

@@ -1,4 +1,4 @@
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 import { expect } from 'chai';
 import {
   _features,

@@ -1,7 +1,7 @@
 
 const sharedWhiteList = [
   'core-js-pure/features/array/find', // no ie11
-  'core-js-pure/features/array/includes', // no ie11
+  '@cmg-rv/core-js-alt/includes', // no ie11
   'core-js-pure/features/set', // ie11 supports Set but not Set#values
   'core-js-pure/features/string/includes', // no ie11
   'core-js-pure/features/number/is-integer', // no ie11,

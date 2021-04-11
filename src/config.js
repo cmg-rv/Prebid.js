@@ -13,12 +13,13 @@
  */
 
 import { isValidPriceConfig } from './cpmBucketManager.js';
-import find from 'core-js-pure/features/array/find.js';
-import includes from 'core-js-pure/features/array/includes.js';
-import Set from 'core-js-pure/features/set';
+import find from '@cmg-rv/core-js-alt/find';
+import includes from '@cmg-rv/core-js-alt/includes';
+// BIDBARREL-SPEC
+// import Set from 'core-js-pure/features/set';
+const from = Array.from;
 import { mergeDeep } from './utils.js';
 
-const from = require('core-js-pure/features/array/from.js');
 const utils = require('./utils.js');
 const CONSTANTS = require('./constants.json');
 

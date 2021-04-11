@@ -129,7 +129,7 @@
   * @property {(string[]|undefined)} submoduleNames - submodules to refresh
   */
 
-import find from 'core-js-pure/features/array/find.js';
+ import find from '@cmg-rv/core-js-alt/find';
 import { config } from '../../src/config.js';
 import events from '../../src/events.js';
 import * as utils from '../../src/utils.js';

@@ -8,9 +8,9 @@ import { fireNativeTrackers, getAssetMessage, getAllAssetsMessage } from './nati
 import constants from './constants.json';
 import { logWarn, replaceAuctionPrice } from './utils.js';
 import { auctionManager } from './auctionManager.js';
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 import { isRendererRequired, executeRenderer } from './Renderer.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 
 const BID_WON = constants.EVENTS.BID_WON;
 

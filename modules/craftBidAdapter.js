@@ -2,8 +2,8 @@ import * as utils from '../src/utils.js';
 import { registerBidder } from '../src/adapters/bidderFactory.js';
 import { BANNER, NATIVE, VIDEO } from '../src/mediaTypes.js';
 import { auctionManager } from '../src/auctionManager.js';
-import find from 'core-js-pure/features/array/find.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import find from '@cmg-rv/core-js-alt/find';
+import includes from '@cmg-rv/core-js-alt/includes';
 import { getStorageManager } from '../src/storageManager.js';
 
 const BIDDER_CODE = 'craft';

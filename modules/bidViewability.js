@@ -8,7 +8,7 @@ import { EVENTS } from '../src/constants.json';
 import { logWarn, isFn, triggerPixel } from '../src/utils.js';
 import { getGlobal } from '../src/prebidGlobal.js';
 import adapterManager, { gdprDataHandler, uspDataHandler } from '../src/adapterManager.js';
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 
 const MODULE_NAME = 'bidViewability';
 const CONFIG_ENABLED = 'enabled';

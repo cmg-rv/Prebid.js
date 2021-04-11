@@ -2,8 +2,8 @@ import adapter from '../src/AnalyticsAdapter.js';
 import CONSTANTS from '../src/constants.json';
 import adapterManager from '../src/adapterManager.js';
 import { ajax } from '../src/ajax.js';
-import find from 'core-js-pure/features/array/find.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import find from '@cmg-rv/core-js-alt/find';
+import includes from '@cmg-rv/core-js-alt/includes';
 const utils = require('../src/utils.js');
 
 export const AUCTION_STATES = {

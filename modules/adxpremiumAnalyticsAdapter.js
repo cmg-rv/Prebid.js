@@ -3,7 +3,7 @@ import adapter from '../src/AnalyticsAdapter.js';
 import adapterManager from '../src/adapterManager.js';
 import CONSTANTS from '../src/constants.json';
 import * as utils from '../src/utils.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 
 const analyticsType = 'endpoint';
 const defaultUrl = 'https://adxpremium.services/graphql';

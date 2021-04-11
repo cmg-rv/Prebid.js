@@ -9,7 +9,7 @@ import { auctionManager } from './auctionManager.js';
 import { targeting } from './targeting.js';
 import { hook } from './hook.js';
 import { sessionLoader } from './debugging.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 import { adunitCounter } from './adUnits.js';
 import { executeRenderer, isRendererRequired } from './Renderer.js';
 import { createBid } from './bidfactory.js';
@@ -212,8 +212,9 @@ $$PREBID_GLOBAL$$.getAdserverTargetingForAdUnitCodeStr = function (adunitCode) {
  * @alias module:pbjs.getAdserverTargetingForAdUnitCode
  * @returns {Object}  returnObj return bids
  */
-$$PREBID_GLOBAL$$.getAdserverTargetingForAdUnitCode = function (adUnitCode) {
-  return $$PREBID_GLOBAL$$.getAdserverTargeting(adUnitCode)[adUnitCode];
+// BIDBARREL-SPEC
+$$PREBID_GLOBAL$$.getAdserverTargetingForAdUnitCode = function (adUnitCode, opts = {forTargeting: false}) {
+  return $$PREBID_GLOBAL$$.getAdserverTargeting(adUnitCode, opts)[adUnitCode];
 };
 
 /**
@@ -221,10 +222,10 @@ $$PREBID_GLOBAL$$.getAdserverTargetingForAdUnitCode = function (adUnitCode) {
  * @return {Object} Map of adUnitCodes and targeting values []
  * @alias module:pbjs.getAdserverTargeting
  */
-
-$$PREBID_GLOBAL$$.getAdserverTargeting = function (adUnitCode) {
+// BIDBARREL-SPEC
+$$PREBID_GLOBAL$$.getAdserverTargeting = function (adUnitCode, opts = {forTargeting: false}) {
   utils.logInfo('Invoking $$PREBID_GLOBAL$$.getAdserverTargeting', arguments);
-  return targeting.getAllTargeting(adUnitCode);
+  return targeting.getAllTargeting(adUnitCode, targeting.getBidsReceived(), opts);
 };
 
 function getBids(type) {
@@ -307,7 +308,7 @@ $$PREBID_GLOBAL$$.setTargetingForGPTAsync = function (adUnit, customSlotMatching
   }
 
   // get our ad unit codes
-  let targetingSet = targeting.getAllTargeting(adUnit);
+  let targetingSet = targeting.getAllTargeting(adUnit, targeting.getBidsReceived(), {forTargeting: true});
 
   // first reset any old targeting
   targeting.resetPresetTargeting(adUnit, customSlotMatching);
@@ -401,16 +402,17 @@ $$PREBID_GLOBAL$$.renderAd = function (doc, id, options) {
           // will check if browser is firefox and below version 67, if so execute special doc.open()
           // for details see: https://github.com/prebid/Prebid.js/pull/3524
           // TODO remove this browser specific code at later date (when Firefox < 67 usage is mostly gone)
-          if (navigator.userAgent && navigator.userAgent.toLowerCase().indexOf('firefox/') > -1) {
-            const firefoxVerRegx = /firefox\/([\d\.]+)/;
-            let firefoxVer = navigator.userAgent.toLowerCase().match(firefoxVerRegx)[1]; // grabs the text in the 1st matching group
-            if (firefoxVer && parseInt(firefoxVer, 10) < 67) {
-              doc.open('text/html', 'replace');
-            }
-          }
+          // BIDBARREL-SPEC
+          // if (navigator.userAgent && navigator.userAgent.toLowerCase().indexOf('firefox/') > -1) {
+          //   const firefoxVerRegx = /firefox\/([\d\.]+)/;
+          //   let firefoxVer = navigator.userAgent.toLowerCase().match(firefoxVerRegx)[1]; // grabs the text in the 1st matching group
+          //   if (firefoxVer && parseInt(firefoxVer, 10) < 67) {
+          //     doc.open('text/html', 'replace');
+          //   }
+          // }
+          setRenderSize(doc, width, height);
           doc.write(ad);
           doc.close();
-          setRenderSize(doc, width, height);
           utils.callBurl(bid);
         } else if (adUrl) {
           const iframe = utils.createInvisibleIframe();

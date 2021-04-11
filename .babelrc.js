@@ -29,6 +29,10 @@ module.exports = {
   ],
   "plugins": [
     path.resolve(__dirname, './plugins/pbjsGlobals.js'),
-    useLocal('babel-plugin-transform-object-assign')
+    useLocal('babel-plugin-transform-object-assign'),
+    // BIDBARREL-SPEC
+    path.resolve(__dirname, '../scripts/bundle/babelReplace.js'),
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-modules-commonjs"
   ]
 };

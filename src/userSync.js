@@ -1,6 +1,6 @@
 import * as utils from './utils.js';
 import { config } from './config.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 import { getCoreStorageManager } from './storageManager.js';
 
 export const USERSYNC_DEFAULT_CONFIG = {

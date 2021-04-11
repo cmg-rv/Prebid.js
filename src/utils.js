@@ -1,13 +1,15 @@
 /* eslint-disable no-console */
 import { config } from './config.js';
 import clone from 'just-clone';
-import find from 'core-js-pure/features/array/find.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import find from '@cmg-rv/core-js-alt/find';
+import includes from '@cmg-rv/core-js-alt/includes';
 
 const CONSTANTS = require('./constants.json');
 
 export { default as deepAccess } from 'dlv/index.js';
 export { default as deepSetValue } from 'dset';
+// BIDBARREL-SPEC
+import {logger as createLogger} from '../../core/utilities/logger';
 
 var tArr = 'Array';
 var tStr = 'String';
@@ -23,6 +25,19 @@ let consoleWarnExists = Boolean(consoleExists && window.console.warn);
 let consoleErrorExists = Boolean(consoleExists && window.console.error);
 var events = require('./events.js');
 
+/**
+ * Wrappers to console.(log | info | warn | error). Takes N arguments, the same as the native methods
+ */
+ // BIDBARREL-SPEC
+ const logger = createLogger({name: 'Prebid', bgColor: '#3b88c3', textColor: "#FFF"}).atVerbosity(3);
+ export const logMessage = logger.logMessage
+
+ export const logInfo = logger.logInfo;
+
+ export const logWarn = logger.logWarn;
+
+ export const logError = logger.logError;
+
 // this allows stubbing of utility functions that are used internally by other utility functions
 export const internal = {
   checkCookieSupport,
@@ -34,10 +49,7 @@ export const internal = {
   insertElement,
   isFn,
   triggerPixel,
-  logError,
-  logWarn,
-  logMessage,
-  logInfo,
+  // BIDBARREL-SPEC
   parseQS,
   formatQS,
   deepEqual
@@ -237,41 +249,6 @@ export function getWindowLocation() {
   return window.location;
 }
 
-/**
- * Wrappers to console.(log | info | warn | error). Takes N arguments, the same as the native methods
- */
-export function logMessage() {
-  if (debugTurnedOn() && consoleLogExists) {
-    console.log.apply(console, decorateLog(arguments, 'MESSAGE:'));
-  }
-}
-
-export function logInfo() {
-  if (debugTurnedOn() && consoleInfoExists) {
-    console.info.apply(console, decorateLog(arguments, 'INFO:'));
-  }
-}
-
-export function logWarn() {
-  if (debugTurnedOn() && consoleWarnExists) {
-    console.warn.apply(console, decorateLog(arguments, 'WARNING:'));
-  }
-}
-
-export function logError() {
-  if (debugTurnedOn() && consoleErrorExists) {
-    console.error.apply(console, decorateLog(arguments, 'ERROR:'));
-  }
-  events.emit(CONSTANTS.EVENTS.AUCTION_DEBUG, {type: 'ERROR', arguments: arguments});
-}
-
-function decorateLog(args, prefix) {
-  args = [].slice.call(args);
-  prefix && args.unshift(prefix);
-  args.unshift('display: inline-block; color: #fff; background: #3b88c3; padding: 1px 4px; border-radius: 3px;');
-  args.unshift('%cPrebid');
-  return args;
-}
 
 export function hasConsoleLogger() {
   return consoleLogExists;
@@ -588,7 +565,7 @@ export function getValueString(param, val, defaultValue) {
   if (isNumber(val)) {
     return val.toString();
   }
-  internal.logWarn('Unsuported type for param: ' + param + ' required type: String');
+  logWarn('Unsuported type for param: ' + param + ' required type: String');
 }
 
 export function uniques(value, index, arry) {

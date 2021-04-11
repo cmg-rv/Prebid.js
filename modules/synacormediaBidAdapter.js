@@ -3,7 +3,7 @@
 import { getAdUnitSizes, logWarn, deepSetValue } from '../src/utils.js';
 import { registerBidder } from '../src/adapters/bidderFactory.js';
 import { BANNER, VIDEO } from '../src/mediaTypes.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 import {config} from '../src/config.js';
 
 const BID_SCHEME = 'https://';

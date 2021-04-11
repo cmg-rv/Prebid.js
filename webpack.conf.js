@@ -6,6 +6,8 @@ var RequireEnsureWithoutJsonp = require('./plugins/RequireEnsureWithoutJsonp.js'
 var { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 var argv = require('yargs').argv;
 var allowedModules = require('./allowedModules');
+// BIDBARREL-SPEC
+var {modifyWebpackConfig} = require('../scripts/bundle/webpackConfig.js');
 
 // list of module names to never include in the common bundle chunk
 var neverBundle = [
@@ -41,7 +43,7 @@ plugins.push(  // this plugin must be last so it can be easily removed for karma
   })
 );
 
-module.exports = {
+module.exports = modifyWebpackConfig({
   devtool: 'source-map',
   resolve: {
     modules: [
@@ -76,4 +78,4 @@ module.exports = {
     ]
   },
   plugins
-};
+});

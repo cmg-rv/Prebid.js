@@ -1,8 +1,8 @@
 import * as utils from '../src/utils.js';
 import { BANNER, VIDEO } from '../src/mediaTypes.js';
 import { registerBidder } from '../src/adapters/bidderFactory.js';
-import includes from 'core-js-pure/features/array/includes';
-import find from 'core-js-pure/features/array/find.js';
+import includes from '@cmg-rv/core-js-alt/includes';
+import find from '@cmg-rv/core-js-alt/find';
 
 const BIDDER_CODE = 'yieldmo';
 const CURRENCY = 'USD';

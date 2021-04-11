@@ -2,7 +2,7 @@ import * as utils from '../src/utils.js';
 import { registerBidder } from '../src/adapters/bidderFactory.js';
 import { BANNER, VIDEO } from '../src/mediaTypes.js';
 import { config } from '../src/config.js';
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 
 const ENDPOINT = 'https://ghb.console.adtarget.com.tr/v2/auction/';
 const BIDDER_CODE = 'adtarget';

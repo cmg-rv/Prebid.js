@@ -1,7 +1,7 @@
 import { config } from '../src/config.js';
 import * as utils from '../src/utils.js';
 import { getHook } from '../src/hook.js';
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 
 const MODULE_NAME = 'GPT Pre-Auction';
 export let _currentConfig = {};

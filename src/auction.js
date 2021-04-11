@@ -65,8 +65,8 @@ import { Renderer } from './Renderer.js';
 import { config } from './config.js';
 import { userSync } from './userSync.js';
 import { hook } from './hook.js';
-import find from 'core-js-pure/features/array/find.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import find from '@cmg-rv/core-js-alt/find';
+import includes from '@cmg-rv/core-js-alt/includes';
 import { OUTSTREAM } from './video.js';
 import { VIDEO } from './mediaTypes.js';
 

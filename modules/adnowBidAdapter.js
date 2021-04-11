@@ -1,7 +1,7 @@
 import { registerBidder } from '../src/adapters/bidderFactory.js';
 import { NATIVE, BANNER } from '../src/mediaTypes.js';
 import * as utils from '../src/utils.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 
 const BIDDER_CODE = 'adnow';
 const ENDPOINT = 'https://n.ads3-adnow.com/a';

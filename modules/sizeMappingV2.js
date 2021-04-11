@@ -7,7 +7,7 @@
 import * as utils from '../src/utils.js';
 import { processNativeAdUnitParams } from '../src/native.js';
 import { adunitCounter } from '../src/adUnits.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 import { getHook } from '../src/hook.js';
 import { adUnitSetupChecks } from '../src/prebid.js';
 

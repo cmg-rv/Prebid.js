@@ -1,6 +1,6 @@
 import { hook } from './hook.js';
 import * as utils from './utils.js';
-import includes from 'core-js-pure/features/array/includes.js';
+import includes from '@cmg-rv/core-js-alt/includes';
 
 const moduleTypeWhiteList = ['core', 'prebid-module'];
 

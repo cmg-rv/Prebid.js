@@ -1,4 +1,4 @@
-import find from 'core-js-pure/features/array/find.js';
+import find from '@cmg-rv/core-js-alt/find';
 const utils = require('./utils.js');
 
 const _defaultPrecision = 2;
